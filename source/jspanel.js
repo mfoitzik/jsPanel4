@@ -2619,7 +2619,9 @@ let jsPanel = {
         };
         self.remove = (id, closedBy, cb) => {
             // self.remove() is just a helper func used in self.close()
-            self.parentElement.removeChild(self);
+            if (self.parentElement) {
+                self.parentElement.removeChild(self);
+            }
             if (!document.getElementById(id)) {
                 self.removeMinimizedReplacement();
                 self.status = 'closed';
